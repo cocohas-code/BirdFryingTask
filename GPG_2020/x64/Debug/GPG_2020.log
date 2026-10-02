@@ -1,0 +1,5 @@
+﻿  Task_Star.cpp
+C:\就活\games\BIRD FRYING_Task\Task_Star.cpp(37,21): warning C4244: '=': 'int' から 'FLOAT' への変換です。データが失われる可能性があります。
+C:\就活\games\BIRD FRYING_Task\Task_Star.cpp(70,22): warning C4244: '=': 'int' から 'FLOAT' への変換です。データが失われる可能性があります。
+C:\就活\games\BIRD FRYING_Task\Task_Star.cpp(71,25): warning C4244: '=': 'int' から 'FLOAT' への変換です。データが失われる可能性があります。
+  GPG_2020.vcxproj -> C:\就活\games\BIRD FRYING_Task\x64\Debug\GPG_2020.exe
