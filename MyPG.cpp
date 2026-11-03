@@ -3,7 +3,7 @@
 
 namespace MyPG
 {
-
+	//MEMO: 初期タスク設定１０６
 
 	MyGameEngine::MyGameEngine()
 		:GameEngine(
@@ -26,6 +26,8 @@ namespace MyPG
 	//ゲームエンジンに追加したものの初期化と開放
 	bool MyGameEngine::Initialize(HWND wnd_)
 	{
+		
+
 		//　画像描画ライブラリの初期化
 		{
 			this->dgi = DG::DGObject::Create(wnd_, this->screenWidth, this->screenHeight, this->multiSample,

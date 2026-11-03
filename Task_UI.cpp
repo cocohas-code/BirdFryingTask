@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------
-//UIの描画
+//Game：UIの描画(ライフ、スコア、カウントダウン等)
 //-------------------------------------------------------------------
 #include  "MyPG.h"
 #include  "Task_UI.h"
@@ -11,7 +11,6 @@ namespace  UI
 	//リソースの初期化
 	bool  Resource::Initialize()
 	{
-		this->imgKey = DG::Image::Create("./data/image/Key.png");
 		return true;
 	}
 	//-------------------------------------------------------------------
@@ -19,6 +18,9 @@ namespace  UI
 	bool  Resource::Finalize()
 	{
 		this->imgKey.reset();
+		this->imgLife.reset();
+		this->imgCnt.reset();
+		this->imgSco.reset();
 		return true;
 	}
 	//-------------------------------------------------------------------
@@ -31,8 +33,8 @@ namespace  UI
 		this->res = Resource::Create();
 
 		//★データ初期化
-		this->pos.x = 1200;
-		this->pos.y = 650;
+		this->pos_Key = ML::Vec2(1200, 650);
+		this->pos_Life = ML::Vec2(100, 100);
 		//★タスクの生成
 
 		return  true;
@@ -58,14 +60,50 @@ namespace  UI
 	}
 	//-------------------------------------------------------------------
 	//「２Ｄ描画」１フレーム毎に行う処理
+	//-------------------------------------------------------------------
 	void  Object::Render2D_AF()
 	{
+		//移動
 		ML::Box2D draw(-100, -67, 200, 134);
-		draw.Offset(this->pos);
+		draw.Offset(this->pos_Key);
 		ML::Box2D src(0, 0, 400, 267);
 		this->res->imgKey->Draw(draw, src);
+
+		Draw_Score();	 //スコア
+		Draw_Life();	 //ライフ
 	}
-	
+	//-------------------------------------------------------------------
+	//獲得したスコアを描画する
+	void Object::Draw_Score()
+	{
+		// Score:
+		ML::Box2D draws(0, 0, 195, 65);
+		ML::Box2D srcs(0, 0, 195, 65);
+		this->res->imgSco->Draw(draws, srcs);
+
+		// 数値
+		snprintf(dispscore, 5, "%04d", ge->score);
+		for (int i = 0; i < 4; i++)
+		{
+			ML::Box2D draw(195, 0, 50, 75);
+			ML::Box2D src((dispscore[i] - '0') * 50, 0, 50, 75);
+			draw.Offset(i * 50 + 50, 0);
+			this->res->imgCnt->Draw(draw, src);
+		}
+	}
+	//-------------------------------------------------------------------
+	//プレイヤーのスコアを描画する
+	void Object::Draw_Life()
+	{
+		for (int i = 0;i < ge->Playerlife;++i)
+		{
+			//MEMO:座標はXYともに１００
+			ML::Box2D draw(-25 + i * 80, -21, 50, 42);
+			draw.Offset(this->pos_Life);
+			ML::Box2D src(0, 0, 50, 42);
+			this->res->imgLife->Draw(draw, src);
+		}
+	}
 	//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	//以下は基本的に変更不要なメソッド
 	//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★

@@ -40,4 +40,7 @@ public:
 	void CheckMove(ML::Vec2& e_);
 	//ÚG”»’è
 	virtual bool CheckHit(const ML::Box2D& hit_);
+
+	//UI‚Ìˆ—‚½‚¿
+	//–¢À‘•
 };

@@ -111,7 +111,7 @@ namespace  Title
 
 		if (this->botan == State::Right)
 		{
-			//ルール説明へ（まだ仮）
+			//ルール説明へ
 			if (true == inp.SE.down) {
 				this->Kill();
 			}

@@ -1,7 +1,7 @@
 #pragma warning(disable:4996)
 #pragma once
 //-------------------------------------------------------------------
-//Game内で使うUI全般（スコア、カウントダウン、操作キー）
+//UIの描画(ライフ、スコア、カウントダウン等)
 //-------------------------------------------------------------------
 #include "BChara.h"
 
@@ -23,7 +23,10 @@ namespace  UI
 		static   WP  instance;
 		static  Resource::SP  Create();
 	//変更可◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
-		DG::Image::SP imgUI,imgKey;
+		DG::Image::SP imgKey = DG::Image::Create("./data/image/Key.png"),
+			imgLife = DG::Image::Create("./data/image/heart.png"),
+			imgCnt = DG::Image::Create("./data/image/count.png"),
+			imgSco = DG::Image::Create("./data/image/score.png");
 	};
 	//-------------------------------------------------------------------
 	class  Object : public  BChara
@@ -46,8 +49,10 @@ namespace  UI
 		bool  Finalize();		//「終了」タスク消滅時に１回だけ行う処理
 	public:
 	//変更可◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
-		//追加したい変数・メソッドはここに追加する
-		//BCharaに含まれないモノのみここに追加する
-		
+		char dispscore[5];
+		void Draw_Score();
+		void Draw_Life();
+		ML::Vec2 pos_Key;
+		ML::Vec2 pos_Life;
 	};
 }

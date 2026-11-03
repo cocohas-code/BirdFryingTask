@@ -65,7 +65,7 @@ namespace  Player
 	void  Object::UpDate()
 	{
 		auto inp = ge->in1->GetState();
-	//移動
+	//移動ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 		ML::Vec2 est(0, 0);
 		if (inp.LStick.BR.on) {
 			est.x += this->moveVec.x;
@@ -94,7 +94,7 @@ namespace  Player
 		}
 		this->CheckMove(est);
 		
-	//接触判定処理
+	//接触判定処理ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 		ML::Box2D me = this->hitBase.OffsetCopy(this->pos);
 		
 		//   -敵-
@@ -108,7 +108,8 @@ namespace  Player
 		if (true == you.Hit(me) &&
 			this->unHitTime <= 0)
 		{
-			//当たったら６０フレーム無敵状態
+			//当たったら無敵状態
+			//ライフも減る
 			this->unHitTime = 60;
 			ge->Playerlife--;
 		}

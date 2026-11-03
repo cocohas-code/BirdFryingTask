@@ -6,9 +6,7 @@
 #include  "Task_GameBG.h"
 #include  "Task_Player.h"
 #include  "Task_Enemy.h"
-#include  "Task_Score.h"
 #include  "Task_Ending.h"
-#include  "Task_Life.h"
 #include  "Task_item00.h"
 #include  "Task_Stardraw.h"
 #include  "Task_Star.h"
@@ -42,20 +40,12 @@ namespace  Game
 		//★データ初期化
 
 		//★タスクの生成
-		//	ーーーーーーーーーーーーーーー
 		auto pl = Player::Object::Create(true);  //プレイヤー
 		pl->pos.x = 300;
 		pl->pos.y = 200;
-		////	ーーーーーーーーーーーーーーー
 		auto En = Enemy::Object::Create(true);	 //敵
-		//	ーーーーーーーーーーーーーーー
-		auto SC = Score::Object::Create(true);	//スコア
-		//	ーーーーーーーーーーーーーーーー
-		auto LF = Life::Object::Create(true);	//ライフ
-
 		auto star = Star::Object::Create(true);
-		//  ーーーーーーーーーーーーーーーー
-		/*auto Sta = Stars::Object::Create(true);*/
+		auto UI = UI::Object::Create(true);
 
 		return  true;
 	}

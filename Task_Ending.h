@@ -3,7 +3,7 @@
 //-------------------------------------------------------------------
 //リザルト画面
 //-------------------------------------------------------------------
-#include "GameEngine_Ver3_83.h"
+#include "BChara.h"
 
 namespace  Ending
 {
@@ -23,11 +23,11 @@ namespace  Ending
 		static   WP  instance;
 		static  Resource::SP  Create();
 		//共有する変数はここに追加する
-		DG::Font::SP font;
-		
+		DG::Font::SP font;      //フォント情報
+		DG::Image::SP imgBG,imgB;	//画像情報
 	};
 	//-------------------------------------------------------------------
-	class  Object : public  BTask
+	class  Object : public  BChara
 	{
 	//変更不可◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
 	public:
@@ -48,6 +48,12 @@ namespace  Ending
 	//変更可◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 	public:
 		//追加したい変数・メソッドはここに追加する
+		ML::Vec2 BGpos; //カーテンの座標
+		ML::Vec2 Bpos;	//ボードの座標
+		int BGmoveCnt;
+		int BmoveCnt;
 		
+		void BG_Move();
+		void Board_Move();
 	};
 }
