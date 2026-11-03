@@ -1,3 +1,4 @@
+# いらないファイルの除外
 # Prerequisites
 *.d
 
@@ -30,3 +31,15 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio のキャッシュ
+.vs/
+
+# Visual Studio のデータベースファイル
+*.VC.db
+*.VC.VC.opendb
+
+# ビルド出力
+Debug/
+Release/
+x64/
