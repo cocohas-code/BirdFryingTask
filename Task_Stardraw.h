@@ -24,7 +24,7 @@ namespace  Stars
 		static  Resource::SP  Create();
 	//•ÏX‰Â
 		//‹¤—L‚·‚é•Ï”‚Í‚±‚±‚É’Ç‰Á‚·‚é
-		DG::Image::SP img;
+		DG::Image::SP img = DG::Image::Create("./data/image/Star.png");
 		DG::Font::SP f;	//Œã‚ÅÁ‚·
 	};
 	//-------------------------------------------------------------------

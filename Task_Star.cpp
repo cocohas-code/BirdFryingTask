@@ -12,7 +12,7 @@ namespace  Star
 	//ƒŠƒ\[ƒX‚Ì‰Šú‰»
 	bool  Resource::Initialize()
 	{
-		this->img = DG::Image::Create("./data/image/Star.png");
+
 		return true;
 	}
 	//-------------------------------------------------------------------

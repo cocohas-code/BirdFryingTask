@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------
-//プレイヤー
+//プレイヤー（移動や当たり判定など）
 //-------------------------------------------------------------------
 #include  "MyPG.h"
 #include  "Task_Player.h"
@@ -41,8 +41,9 @@ namespace  Player
 		this->res = Resource::Create();
 
 		//★データ初期化
-		this->hitBase = ML::Box2D(-100, -75, 200, 150);
-		this->moveCnt = 0;
+		this->moveCnt = 0;									//移動カウント
+		this->hitBase = ML::Box2D(-100, -75, 200, 150);		//接触判定用の矩形
+		this->pos = ML::Vec2(300, 200);						//座標
 		this->moveVec = ML::Vec2(10,10);					//移動ベクトル
 		//★タスクの生成
 		return  true;

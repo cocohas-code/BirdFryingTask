@@ -41,11 +41,10 @@ namespace  Game
 
 		//★タスクの生成
 		auto pl = Player::Object::Create(true);  //プレイヤー
-		pl->pos.x = 300;
-		pl->pos.y = 200;
 		auto En = Enemy::Object::Create(true);	 //敵
-		auto star = Star::Object::Create(true);
-		auto UI = UI::Object::Create(true);
+		/*auto star = Star::Object::Create(true);*/  //星（初期）
+		auto st = Stars::Object::Create(true);
+		auto UI = UI::Object::Create(true);      //UI
 
 		return  true;
 	}
@@ -58,6 +57,7 @@ namespace  Game
 		ge->KillAll_G("プレイヤ");
 		ge->KillAll_G("敵");
 		ge->KillAll_G("スコア");
+		ge->KillAll_G("ユーアイ");
 
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			//★引き継ぎタスクの生成
@@ -71,7 +71,6 @@ namespace  Game
 	//「更新」１フレーム毎に行う処理
 	void  Object::UpDate()
 	{
-
 		auto inp = ge->in1->GetState();
 		if (inp.L1.down) {
 			this->gameReady = false;

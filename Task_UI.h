@@ -50,9 +50,9 @@ namespace  UI
 	public:
 	//変更可◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇◇
 		char dispscore[5];
-		void Draw_Score();
-		void Draw_Life();
-		ML::Vec2 pos_Key;
-		ML::Vec2 pos_Life;
+		ML::Vec2 pos_Key;	//移動UI座標
+		ML::Vec2 pos_Life;  //ライフ座標
+		void Draw_Score();  //スコア描画
+		void Draw_Life();   //ライフ描画
 	};
 }

@@ -12,7 +12,6 @@ namespace  Stars
 	//リソースの初期化
 	bool  Resource::Initialize()
 	{
-		this->img = DG::Image::Create("./data/image/Stars.png");
 		return true;
 	}
 	//-------------------------------------------------------------------
@@ -32,10 +31,10 @@ namespace  Stars
 		this->res = Resource::Create();
 
 		//★データ初期化
-		this->hitBase = ML::Box2D(-50,-40,100,80);	//接触矩形
 		this->scoreAdd = 50;						//スコア加算
-		this->pos.x = 500;
-		
+		this->pos.x = 500;								//座標
+		this->chip[0] = ML::Box2D(0, 0, 100, 80);		//画像情報
+		this->hitBase = ML::Box2D(-50, -40, 100, 80);	//接触矩形
 		
 		for (int y = 0;y < 2;++y) {
 			for (int x = 0;x < 5;++x) {
@@ -47,12 +46,6 @@ namespace  Stars
 		}
 
 
-		for (int c = 0; c < 1; ++c)
-		{
-			int x = (c % 1);
-			int y = (c / 1);
-			this->chip[c] = ML::Box2D(100, 80, 100, 80);
-		}
 		//★タスクの生成
 		return  true;
 	}
@@ -74,12 +67,12 @@ namespace  Stars
 	void  Object::UpDate()
 	{
 		this->moveCnt++;
-		if (this->moveCnt > 300)
+		if (this->moveCnt > 100)
 		{
 			this->moveCnt = 0;
-			/*this->pos.x = 500;*/
-			/*this->moveVec.x = 15;
-			this->side = rand() % 3;*/
+			this->pos.x = 1200;
+			this->moveVec.x = 15;
+			this->side = rand() % 3;
 
 			//ランダムは三パターン
 			//変わるもの：位置、x座標。
@@ -98,12 +91,15 @@ namespace  Stars
 	//「２Ｄ描画」１フレーム毎に行う処理
 	void  Object::Render2D_AF()
 	{
+		for (int y = 0; y < 2; ++y) {
+			for (int x = 0; x < 5; ++x) {
+				if (this->arr[this->side][y][x] == 0) {
+					continue;
+				}
 
-		for (int y = 0;y < 2;++y) {
-			for (int x = 0;x < 5;++x) {
 				ML::Box2D draw(x * 100, y * 80, 100, 80);
 				draw.Offset(this->pos);
-				this->res->img->Draw(draw, this->chip[this->arr[this->side][y][x]]);
+				this->res->img->Draw(draw, this->chip[0]);
 			}
 		}
 
